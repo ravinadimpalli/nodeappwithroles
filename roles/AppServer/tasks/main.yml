@@ -42,3 +42,23 @@
 
 - name: "starting the app"
   command: "pm2 start -f {{app_path}}/hello.js"
+
+- name: "install app specific tools"
+  npm:
+    name: "{{item}}"
+    global: yes
+    state: present
+  loop:
+  - grunt
+  - bower
+  - grunt-cli
+
+- name: "cloning the code from git"
+  git:
+    repo: "https://github.com/tellform/tellform.git"
+    dest: "{{app_path}}/tellform"
+
+- name: "building the code"
+  command: grunt build
+  args:
+    chdir: "{{app_path}}/tellform/"
