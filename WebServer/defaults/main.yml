@@ -1,2 +1,4 @@
 ---
 # defaults file for WebServer
+web_server_pr_ip: 172.31.28.37
+web_server_pub_ip: 35.165.37.7

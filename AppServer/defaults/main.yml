@@ -1,2 +1,5 @@
 ---
 # defaults file for AppServer
+setup_folder_path: /home/ansible/nodesetup
+app_path: /home/ansible/app
+app_server_ip: 172.31.24.99

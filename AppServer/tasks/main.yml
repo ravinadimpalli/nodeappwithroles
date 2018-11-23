@@ -1,2 +1,35 @@
 ---
 # tasks file for AppServer
+- name: "download node setup sh file"
+  get_url:
+    url: "https://deb.nodesource.com/setup_6.x"
+    dest: "{{setup_folder_path}}/nodesource_setup.sh"
+    mode: '777'
+
+- name: "execute downloaded shell"
+  shell: nodesource_setup.sh
+  args:
+    chdir: "{{setup_folder_path}}"
+    executable: /bin/bash
+
+- name: "install nodejs"
+  apt:
+    name: nodejs
+    state: present
+
+- name: "installing node pm2"
+  npm:
+    name: pm2
+    global: yes #install nodejs library as global
+    state: present
+
+- name: "copying hello.js to app server"
+  template:
+    src: "../templates/hello.js.j2"
+    dest: "{{app_path}}/hello.js"
+    mode: "777"
+
+- name: "starting the app"
+  command: "pm2 start hello.js"
+  args:
+    chdir: "{{app_path}}"
