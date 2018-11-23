@@ -59,6 +59,5 @@
     dest: "{{app_path}}/tellform"
 
 - name: "building the code"
-  command: grunt build
-  args:
-    chdir: "{{app_path}}/tellform/"
+  npm:
+    path: "{{app_path}}/tellform/"
