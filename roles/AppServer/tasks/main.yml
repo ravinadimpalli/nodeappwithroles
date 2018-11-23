@@ -41,4 +41,4 @@
     mode: "777"
 
 - name: "starting the app"
-  command: "pm2 start {{app_path}}/hello.js"
+  command: "pm2 start -f {{app_path}}/hello.js"
