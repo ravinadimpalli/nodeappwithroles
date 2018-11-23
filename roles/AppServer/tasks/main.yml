@@ -13,9 +13,8 @@
     mode: '777'
 
 - name: "execute downloaded shell"
-  shell: nodesource_setup.sh
+  shell: "{{setup_folder_path}}/nodesource_setup.sh"
   args:
-    chdir: "{{setup_folder_path}}"
     executable: /bin/bash
 
 - name: "install nodejs"
