@@ -28,6 +28,11 @@
     global: yes #install nodejs library as global
     state: present
 
+- name: "create folder for app"
+  file:
+    name: "{{app_path}}"
+    mode: "777"
+
 - name: "copying hello.js to app server"
   template:
     src: "../templates/hello.js.j2"
