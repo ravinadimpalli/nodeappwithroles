@@ -1,7 +1,10 @@
 ---
 # tasks file for common
-- name: "install git"
+- name: "install utilities"
   apt:
-    name: git
+    name: "{{item}}"
     state: present
+  loop:
+  - git
+  - tree
 
