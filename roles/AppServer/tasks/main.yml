@@ -1,5 +1,11 @@
 ---
 # tasks file for AppServer
+- name: "create folder to download setup file"
+  file:
+    path: "{{setup_folder_path}}"
+    state: directory
+    mode: '777'
+
 - name: "download node setup sh file"
   get_url:
     url: "https://deb.nodesource.com/setup_6.x"
